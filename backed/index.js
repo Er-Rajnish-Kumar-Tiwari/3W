@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://Tanish281202:Tanish281202@cluster0.zjcytrj.mongodb.net/leaderboard', {
+mongoose.connect('mongodb+srv://Tanish281202:Tanish281202@cluster0.zjcytrj.mongodb.net/leaderboard', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log(' MongoDB connected'))
@@ -19,5 +19,5 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://Tanish281202:Tanish2812
 app.use('/api/users', userRoutes);
 app.use('/api/history', historyRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));

@@ -8,12 +8,20 @@ exports.getUsersByCategory = async (req, res) => {
 };
 
 exports.addUser = async (req, res) => {
-  const { name, category } = req.body;
-  if (!name) return res.status(400).json({ error: 'Name is required' });
-  const user = new User({ name, category: category || 'Party Ranking' });
-  await user.save();
-  res.json(user);
+  try {
+    const { name, category } = req.body;
+    if (!name || !category) {
+      return res.status(400).json({ error: 'Name and category required' });
+    }
+    const user = new User({ name, category });
+    await user.save();
+    res.json(user);
+  } catch (err) {
+    console.error(' Add User Error:', err.message);
+    res.status(500).json({ error: 'Server Error' });
+  }
 };
+
 
 exports.claimPoints = async (req, res) => {
   const { name } = req.body;
