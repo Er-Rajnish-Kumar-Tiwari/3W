@@ -8,7 +8,7 @@ const UserForm = ({ onUserAdded }) => {
 
   // Fetch all user names for dropdown selection
   const fetchUsers = async () => {
-    const res = await axios.get('https://threew-backend-oi3h.onrender.com/api/users');
+    const res = await axios.get('http://localhost:3000/api/users');
     setUserList(res.data);
   };
 
@@ -18,7 +18,7 @@ const UserForm = ({ onUserAdded }) => {
 
   const handleAddUser = async () => {
     if (!newUser) return;
-    await axios.post('https://threew-backend-oi3h.onrender.com/api/users', { name: newUser });
+    await axios.post('http://localhost:3000/api/users', { name: newUser });
     setNewUser('');
     fetchUsers();
     onUserAdded();
@@ -26,7 +26,7 @@ const UserForm = ({ onUserAdded }) => {
 
   const handleClaimPoints = async () => {
     if (!selectedUser) return;
-    await axios.post('https://threew-backend-oi3h.onrender.com/api/users/claim', { name: selectedUser });
+    await axios.post('http://localhost:3000/api/users/claim', { name: selectedUser });
     setSelectedUser('');
     onUserAdded();
   };

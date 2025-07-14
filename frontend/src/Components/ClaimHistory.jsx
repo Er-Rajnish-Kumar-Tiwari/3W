@@ -7,7 +7,7 @@ const ClaimHistory = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await axios.get('https://threew-backend-oi3h.onrender.com/api/history');
+        const res = await axios.get('http://localhost:3000/api/history');
         setHistory(res.data);
       } catch (err) {
         console.error('Error fetching history:', err);

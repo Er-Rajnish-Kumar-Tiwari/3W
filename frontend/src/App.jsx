@@ -11,7 +11,7 @@ const App = () => {
   const [selectedCategory, setSelectedCategory] = useState('Party Ranking');
 
   const fetchUsers = async () => {
-    const res = await axios.get(`https://threew-backend-oi3h.onrender.com/api/users?category=${selectedCategory}`);
+    const res = await axios.get(`http://localhost:3000/api/users?category=${selectedCategory}`);
     const sorted = [...res.data].sort((a, b) => b.totalPoints - a.totalPoints);
     setUsers(sorted);
   };
